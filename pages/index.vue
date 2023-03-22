@@ -21,14 +21,15 @@
       <div v-if="validarRutChileno(rut) == false">
         <p> rut invalido</p>
       </div>
+      <!-- 
       <div>
-        <v-list >
+       <v-list >
           <v-item v-for="animals in animals" :key="animals.name">
               {{ animals.name }}
           </v-item>
         </v-list>
       </div>
-
+      -->
     </v-col>
   </v-row>
 </template>

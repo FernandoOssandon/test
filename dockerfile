@@ -1,16 +1,22 @@
-# create a dockerfile for the application
-FROM node:16.3.0-alpine3.11
-# Create app directory
+FROM node:16.3.0
+
+
 WORKDIR /usr/src/app
-# Install app dependencies
+
 COPY package*.json ./
-RUN npm install
-# Bundle app source
+RUN npm ci
+
 COPY . .
 EXPOSE $PORT
 
 ENV NODE_ENV=production
 ENV HOST=0.0.0.0
+
+# PRISMA 
+RUN npm install -g prisma
+RUN prisma generate
+
+
 RUN npm run build
 
-CMD [ "npm","run", "start" ]
+CMD [ "npm", "run", "start" ]
